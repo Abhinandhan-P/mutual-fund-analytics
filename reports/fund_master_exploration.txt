@@ -1,0 +1,36 @@
+
+================================================================================
+FUND MASTER EXPLORATION
+================================================================================
+
+Unique Fund Houses:
+<StringArray>
+[         'SBI Mutual Fund',         'HDFC Mutual Fund',
+      'ICICI Prudential MF',          'Nippon India MF',
+        'Kotak Mahindra MF',         'Axis Mutual Fund',
+ 'Aditya Birla Sun Life MF',          'UTI Mutual Fund',
+           'Mirae Asset MF',          'DSP Mutual Fund']
+Length: 10, dtype: str
+
+Unique Categories:
+<StringArray>
+['Equity', 'Debt']
+Length: 2, dtype: str
+
+Unique Sub-Categories:
+<StringArray>
+[      'Large Cap',       'Small Cap',            'Gilt',         'Mid Cap',
+  'Short Duration',           'Value',          'Liquid',       'Index/ETF',
+       'Flexi Cap',           'Index', 'Large & Mid Cap',            'ELSS']
+Length: 12, dtype: str
+
+Unique Risk Categories:
+<StringArray>
+['Moderate', 'Very High', 'Low', 'High', 'Moderately High']
+Length: 5, dtype: str
+
+Number of unique AMFI codes:
+40
+
+AMFI code range:
+100016 to 149324

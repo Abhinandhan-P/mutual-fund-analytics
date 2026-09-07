@@ -1,0 +1,599 @@
+Found 16 CSV files.
+
+================================================================================
+FILE: 1788499980509-304c1255-08_investor_transactions.csv
+================================================================================
+
+SHAPE:
+(32778, 13)
+
+DATA TYPES:
+investor_id               str
+transaction_date          str
+amfi_code               int64
+transaction_type          str
+amount_inr              int64
+state                     str
+city                      str
+city_tier                 str
+age_group                 str
+gender                    str
+annual_income_lakh    float64
+payment_mode              str
+kyc_status                str
+dtype: object
+
+FIRST 5 ROWS:
+  investor_id transaction_date  ...  payment_mode kyc_status
+0   INV003054       2024-01-01  ...           UPI   Verified
+1   INV002952       2024-01-01  ...        Cheque   Verified
+2   INV003420       2024-01-01  ...       Mandate   Verified
+3   INV003436       2024-01-01  ...        Cheque    Pending
+4   INV004691       2024-01-01  ...   Net Banking    Pending
+
+[5 rows x 13 columns]
+
+MISSING VALUES:
+investor_id           0
+transaction_date      0
+amfi_code             0
+transaction_type      0
+amount_inr            0
+state                 0
+city                  0
+city_tier             0
+age_group             0
+gender                0
+annual_income_lakh    0
+payment_mode          0
+kyc_status            0
+dtype: int64
+
+================================================================================
+FILE: 1788499982117-e3d6ab98-09_portfolio_holdings.csv
+================================================================================
+
+SHAPE:
+(322, 8)
+
+DATA TYPES:
+amfi_code              int64
+stock_symbol             str
+stock_name               str
+sector                   str
+weight_pct           float64
+market_value_cr      float64
+current_price_inr    float64
+portfolio_date           str
+dtype: object
+
+FIRST 5 ROWS:
+   amfi_code stock_symbol  ... current_price_inr portfolio_date
+0     119551    POWERGRID  ...           6011.08     2025-12-31
+1     119551     HDFCBANK  ...           1074.65     2025-12-31
+2     119551       GRASIM  ...           5964.59     2025-12-31
+3     119551      DRREDDY  ...           3748.82     2025-12-31
+4     119551   ASIANPAINT  ...           1321.45     2025-12-31
+
+[5 rows x 8 columns]
+
+MISSING VALUES:
+amfi_code            0
+stock_symbol         0
+stock_name           0
+sector               0
+weight_pct           0
+market_value_cr      0
+current_price_inr    0
+portfolio_date       0
+dtype: int64
+
+================================================================================
+FILE: 1788499982615-f9647ab2-10_benchmark_indices.csv
+================================================================================
+
+SHAPE:
+(8050, 3)
+
+DATA TYPES:
+date               str
+index_name         str
+close_value    float64
+dtype: object
+
+FIRST 5 ROWS:
+         date index_name  close_value
+0  2022-01-03    NIFTY50     17492.79
+1  2022-01-04    NIFTY50     17689.64
+2  2022-01-05    NIFTY50     17835.05
+3  2022-01-06    NIFTY50     17878.51
+4  2022-01-07    NIFTY50     17759.15
+
+MISSING VALUES:
+date           0
+index_name     0
+close_value    0
+dtype: int64
+
+================================================================================
+FILE: 1788499983024-b042c300-01_fund_master.csv
+================================================================================
+
+SHAPE:
+(40, 15)
+
+DATA TYPES:
+amfi_code               int64
+fund_house                str
+scheme_name               str
+category                  str
+sub_category              str
+plan                      str
+launch_date               str
+benchmark                 str
+expense_ratio_pct     float64
+exit_load_pct         float64
+min_sip_amount          int64
+min_lumpsum_amount      int64
+fund_manager              str
+risk_category             str
+sebi_category_code        str
+dtype: object
+
+FIRST 5 ROWS:
+   amfi_code       fund_house  ... risk_category sebi_category_code
+0     119551  SBI Mutual Fund  ...      Moderate               EC01
+1     119552  SBI Mutual Fund  ...      Moderate               EC01
+2     119598  SBI Mutual Fund  ...     Very High               EC03
+3     119599  SBI Mutual Fund  ...     Very High               EC03
+4     119120  SBI Mutual Fund  ...           Low               DC02
+
+[5 rows x 15 columns]
+
+MISSING VALUES:
+amfi_code             0
+fund_house            0
+scheme_name           0
+category              0
+sub_category          0
+plan                  0
+launch_date           0
+benchmark             0
+expense_ratio_pct     0
+exit_load_pct         0
+min_sip_amount        0
+min_lumpsum_amount    0
+fund_manager          0
+risk_category         0
+sebi_category_code    0
+dtype: int64
+
+================================================================================
+FILE: 1788499983331-4389156d-02_nav_history.csv
+================================================================================
+
+SHAPE:
+(46000, 3)
+
+DATA TYPES:
+amfi_code      int64
+date             str
+nav          float64
+dtype: object
+
+FIRST 5 ROWS:
+   amfi_code        date      nav
+0     119551  2022-01-03  54.3856
+1     119551  2022-01-04  54.3474
+2     119551  2022-01-05  54.6869
+3     119551  2022-01-06  55.4550
+4     119551  2022-01-07  55.3692
+
+MISSING VALUES:
+amfi_code    0
+date         0
+nav          0
+dtype: int64
+
+================================================================================
+FILE: 1788499984134-b0cbf625-03_aum_by_fund_house.csv
+================================================================================
+
+SHAPE:
+(90, 5)
+
+DATA TYPES:
+date                  str
+fund_house            str
+aum_lakh_crore    float64
+aum_crore           int64
+num_schemes         int64
+dtype: object
+
+FIRST 5 ROWS:
+         date           fund_house  aum_lakh_crore  aum_crore  num_schemes
+0  2022-03-31      SBI Mutual Fund            6.05     605000          186
+1  2022-03-31  ICICI Prudential MF            4.65     465000          216
+2  2022-03-31     HDFC Mutual Fund            4.35     435000          195
+3  2022-03-31      Nippon India MF            2.70     270000          177
+4  2022-03-31    Kotak Mahindra MF            2.70     270000          168
+
+MISSING VALUES:
+date              0
+fund_house        0
+aum_lakh_crore    0
+aum_crore         0
+num_schemes       0
+dtype: int64
+
+================================================================================
+FILE: 1788499984405-d702a6c6-04_monthly_sip_inflows.csv
+================================================================================
+
+SHAPE:
+(48, 6)
+
+DATA TYPES:
+month                            str
+sip_inflow_crore               int64
+active_sip_accounts_crore    float64
+new_sip_accounts_lakh        float64
+sip_aum_lakh_crore           float64
+yoy_growth_pct               float64
+dtype: object
+
+FIRST 5 ROWS:
+     month  sip_inflow_crore  ...  sip_aum_lakh_crore  yoy_growth_pct
+0  2022-01             11517  ...                4.80             NaN
+1  2022-02             11438  ...                4.85             NaN
+2  2022-03             12328  ...                5.01             NaN
+3  2022-04             11863  ...                5.12             NaN
+4  2022-05             12286  ...                5.15             NaN
+
+[5 rows x 6 columns]
+
+MISSING VALUES:
+month                         0
+sip_inflow_crore              0
+active_sip_accounts_crore     0
+new_sip_accounts_lakh         0
+sip_aum_lakh_crore            0
+yoy_growth_pct               12
+dtype: int64
+
+================================================================================
+FILE: 1788499984721-4b860901-05_category_inflows.csv
+================================================================================
+
+SHAPE:
+(144, 3)
+
+DATA TYPES:
+month                   str
+category                str
+net_inflow_crore    float64
+dtype: object
+
+FIRST 5 ROWS:
+     month         category  net_inflow_crore
+0  2024-04        Large Cap            2413.0
+1  2024-04          Mid Cap            3897.0
+2  2024-04        Small Cap            3533.0
+3  2024-04        Flexi Cap            4947.0
+4  2024-04  Large & Mid Cap            4214.0
+
+MISSING VALUES:
+month               0
+category            0
+net_inflow_crore    0
+dtype: int64
+
+================================================================================
+FILE: 1788499985036-da4a0c4a-06_industry_folio_count.csv
+================================================================================
+
+SHAPE:
+(21, 6)
+
+DATA TYPES:
+month                      str
+total_folios_crore     float64
+equity_folios_crore    float64
+debt_folios_crore      float64
+hybrid_folios_crore    float64
+others_folios_crore    float64
+dtype: object
+
+FIRST 5 ROWS:
+     month  total_folios_crore  ...  hybrid_folios_crore  others_folios_crore
+0  2022-01               13.26  ...                 0.80                 1.33
+1  2022-04               13.91  ...                 0.83                 1.39
+2  2022-07               13.85  ...                 0.83                 1.38
+3  2022-10               14.12  ...                 0.85                 1.41
+4  2023-01               14.81  ...                 0.89                 1.48
+
+[5 rows x 6 columns]
+
+MISSING VALUES:
+month                  0
+total_folios_crore     0
+equity_folios_crore    0
+debt_folios_crore      0
+hybrid_folios_crore    0
+others_folios_crore    0
+dtype: int64
+
+================================================================================
+FILE: 1788499985420-bb134abf-07_scheme_performance.csv
+================================================================================
+
+SHAPE:
+(40, 19)
+
+DATA TYPES:
+amfi_code               int64
+scheme_name               str
+fund_house                str
+category                  str
+plan                      str
+return_1yr_pct        float64
+return_3yr_pct        float64
+return_5yr_pct        float64
+benchmark_3yr_pct     float64
+alpha                 float64
+beta                  float64
+sharpe_ratio          float64
+sortino_ratio         float64
+std_dev_ann_pct       float64
+max_drawdown_pct      float64
+aum_crore               int64
+expense_ratio_pct     float64
+morningstar_rating      int64
+risk_grade                str
+dtype: object
+
+FIRST 5 ROWS:
+   amfi_code  ... risk_grade
+0     119551  ...   Moderate
+1     119552  ...   Moderate
+2     119598  ...  Very High
+3     119599  ...  Very High
+4     119120  ...        Low
+
+[5 rows x 19 columns]
+
+MISSING VALUES:
+amfi_code             0
+scheme_name           0
+fund_house            0
+category              0
+plan                  0
+return_1yr_pct        0
+return_3yr_pct        0
+return_5yr_pct        0
+benchmark_3yr_pct     0
+alpha                 0
+beta                  0
+sharpe_ratio          0
+sortino_ratio         0
+std_dev_ann_pct       0
+max_drawdown_pct      0
+aum_crore             0
+expense_ratio_pct     0
+morningstar_rating    0
+risk_grade            0
+dtype: int64
+
+================================================================================
+FILE: live_nav_118632.csv
+================================================================================
+
+SHAPE:
+(3366, 3)
+
+DATA TYPES:
+amfi_code      int64
+date             str
+nav          float64
+dtype: object
+
+FIRST 5 ROWS:
+   amfi_code        date       nav
+0     118632  04-09-2026  100.3594
+1     118632  03-09-2026  100.2974
+2     118632  02-09-2026  100.4299
+3     118632  01-09-2026  100.8756
+4     118632  31-08-2026  101.4885
+
+MISSING VALUES:
+amfi_code    0
+date         0
+nav          0
+dtype: int64
+
+================================================================================
+FILE: live_nav_119092.csv
+================================================================================
+
+SHAPE:
+(3632, 3)
+
+DATA TYPES:
+amfi_code      int64
+date             str
+nav          float64
+dtype: object
+
+FIRST 5 ROWS:
+   amfi_code        date        nav
+0     119092  04-09-2026  6300.8316
+1     119092  03-09-2026  6298.9777
+2     119092  02-09-2026  6296.6127
+3     119092  01-09-2026  6291.4731
+4     119092  31-08-2026  6289.2968
+
+MISSING VALUES:
+amfi_code    0
+date         0
+nav          0
+dtype: int64
+
+================================================================================
+FILE: live_nav_119551.csv
+================================================================================
+
+SHAPE:
+(3303, 3)
+
+DATA TYPES:
+amfi_code      int64
+date             str
+nav          float64
+dtype: object
+
+FIRST 5 ROWS:
+   amfi_code        date       nav
+0     119551  04-09-2026  107.1574
+1     119551  03-09-2026  107.1000
+2     119551  02-09-2026  106.9526
+3     119551  01-09-2026  106.8888
+4     119551  31-08-2026  106.8849
+
+MISSING VALUES:
+amfi_code    0
+date         0
+nav          0
+dtype: int64
+
+================================================================================
+FILE: live_nav_120503.csv
+================================================================================
+
+SHAPE:
+(3375, 3)
+
+DATA TYPES:
+amfi_code      int64
+date             str
+nav          float64
+dtype: object
+
+FIRST 5 ROWS:
+   amfi_code        date       nav
+0     120503  04-09-2026  111.6067
+1     120503  03-09-2026  111.8637
+2     120503  02-09-2026  111.5608
+3     120503  01-09-2026  112.0480
+4     120503  31-08-2026  112.9309
+
+MISSING VALUES:
+amfi_code    0
+date         0
+nav          0
+dtype: int64
+
+================================================================================
+FILE: live_nav_120841.csv
+================================================================================
+
+SHAPE:
+(3369, 3)
+
+DATA TYPES:
+amfi_code      int64
+date             str
+nav          float64
+dtype: object
+
+FIRST 5 ROWS:
+   amfi_code        date       nav
+0     120841  04-09-2026  249.9414
+1     120841  03-09-2026  249.8838
+2     120841  02-09-2026  248.9476
+3     120841  01-09-2026  250.6634
+4     120841  31-08-2026  252.9640
+
+MISSING VALUES:
+amfi_code    0
+date         0
+nav          0
+dtype: int64
+
+================================================================================
+FILE: live_nav_125497.csv
+================================================================================
+
+SHAPE:
+(3159, 3)
+
+DATA TYPES:
+amfi_code      int64
+date             str
+nav          float64
+dtype: object
+
+FIRST 5 ROWS:
+   amfi_code        date       nav
+0     125497  04-09-2026  216.6525
+1     125497  03-09-2026  216.4037
+2     125497  02-09-2026  216.0825
+3     125497  01-09-2026  216.7425
+4     125497  31-08-2026  217.6184
+
+MISSING VALUES:
+amfi_code    0
+date         0
+nav          0
+dtype: int64
+
+
+================================================================================
+FUND MASTER EXPLORATION
+================================================================================
+
+Unique Fund Houses:
+<StringArray>
+[         'SBI Mutual Fund',         'HDFC Mutual Fund',
+      'ICICI Prudential MF',          'Nippon India MF',
+        'Kotak Mahindra MF',         'Axis Mutual Fund',
+ 'Aditya Birla Sun Life MF',          'UTI Mutual Fund',
+           'Mirae Asset MF',          'DSP Mutual Fund']
+Length: 10, dtype: str
+
+Unique Categories:
+<StringArray>
+['Equity', 'Debt']
+Length: 2, dtype: str
+
+Unique Sub-Categories:
+<StringArray>
+[      'Large Cap',       'Small Cap',            'Gilt',         'Mid Cap',
+  'Short Duration',           'Value',          'Liquid',       'Index/ETF',
+       'Flexi Cap',           'Index', 'Large & Mid Cap',            'ELSS']
+Length: 12, dtype: str
+
+Unique Risk Categories:
+<StringArray>
+['Moderate', 'Very High', 'Low', 'High', 'Moderately High']
+Length: 5, dtype: str
+
+Number of unique AMFI codes:
+40
+
+AMFI code range:
+100016 to 149324
+
+================================================================================
+AMFI CODE VALIDATION
+================================================================================
+
+Unique AMFI codes in fund_master: 40
+Unique AMFI codes in nav_history: 40
+
+Codes in fund_master but missing from nav_history:
+None
+
+Codes in nav_history but missing from fund_master:
+None
+
+RESULT: PASS - AMFI codes match between fund_master and nav_history.
