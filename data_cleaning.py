@@ -628,3 +628,67 @@ print(
     f"Saved cleaned AUM data to: "
     f"{PROCESSED_DIR / 'aum_by_fund_house_cleaned.csv'}"
 )
+# ============================================================
+# 30. Clean Monthly SIP Inflows
+# ============================================================
+
+sip_df = pd.read_csv(
+    next(RAW_DIR.glob("*04_monthly_sip_inflows.csv"))
+)
+
+# Convert month to datetime
+sip_df["month"] = pd.to_datetime(
+    sip_df["month"]
+)
+
+print("\nMonthly SIP Inflows validation:")
+
+print(f"Rows: {len(sip_df):,}")
+print(f"Duplicate months: {sip_df.duplicated(subset=['month']).sum():,}")
+print(f"Missing values: {sip_df.isna().sum().sum():,}")
+
+invalid_sip_inflow = (
+    sip_df["sip_inflow_crore"] <= 0
+).sum()
+
+invalid_accounts = (
+    sip_df["active_sip_accounts_crore"] <= 0
+).sum()
+
+print(
+    f"SIP inflows <= 0: "
+    f"{invalid_sip_inflow:,}"
+)
+
+print(
+    f"Active SIP accounts <= 0: "
+    f"{invalid_accounts:,}"
+)
+
+if (
+    sip_df.duplicated(subset=["month"]).sum() == 0
+    and invalid_sip_inflow == 0
+    and invalid_accounts == 0
+):
+    print(
+        "RESULT: PASS - Monthly SIP Inflows "
+        "data is clean and valid."
+    )
+else:
+    print(
+        "RESULT: FAIL - Please review "
+        "Monthly SIP Inflows data."
+    )
+
+# Save cleaned SIP data
+sip_df["month"] = sip_df["month"].dt.strftime("%Y-%m")
+
+sip_df.to_csv(
+    PROCESSED_DIR / "monthly_sip_inflows_cleaned.csv",
+    index=False
+)
+
+print(
+    f"Saved cleaned SIP data to: "
+    f"{PROCESSED_DIR / 'monthly_sip_inflows_cleaned.csv'}"
+)

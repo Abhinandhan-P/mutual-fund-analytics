@@ -1,0 +1,10 @@
+1. The fund universe contains 40 schemes across 10 fund houses, with Equity representing 34 schemes (85%) and Debt representing 6 schemes (15%).
+2. Large Cap is the largest sub-category with 14 schemes, followed by Mid Cap with 7 and Small Cap with 6.
+3. SBI has the highest average AUM among the fund houses in the dataset, followed by ICICI Prudential and HDFC.
+4. Monthly SIP inflows show a strong upward trend from approximately ₹11,500 crore in early 2022 to above ₹30,000 crore by the end of 2025.
+5. Active SIP accounts increased substantially from approximately 4.9 crore to around 9.3 crore over the analysis period.
+6. Equity funds generated substantially higher average returns than Debt funds: approximately 15.46% versus 6.29% over the 3-year horizon.
+7. The investor transaction dataset is dominated by SIP transactions, with 19,716 SIP transactions compared with 8,095 Lumpsum and 4,967 Redemption transactions.
+8. T30 cities account for 21,719 transactions (66.3%), compared with 11,059 transactions (33.7%) from B30 cities.
+9. Male investors account for 21,809 transactions (66.5%), while female investors account for 10,969 transactions (33.5%). The gender mix is broadly similar across T30 and B30 cities.
+10. Performance metrics show strong relationships: 3-year returns correlate 0.93 with 5-year returns and 0.96 with annualized volatility, while Sharpe and Sortino ratios are almost perfectly correlated at 0.99.
