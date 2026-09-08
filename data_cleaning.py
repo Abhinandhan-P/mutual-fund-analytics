@@ -692,3 +692,303 @@ print(
     f"Saved cleaned SIP data to: "
     f"{PROCESSED_DIR / 'monthly_sip_inflows_cleaned.csv'}"
 )
+# ============================================================
+# 31. Clean Portfolio Holdings
+# ============================================================
+
+portfolio_df = pd.read_csv(
+    next(RAW_DIR.glob("*09_portfolio_holdings.csv"))
+)
+
+print("\nPortfolio Holdings validation:")
+
+print(f"Rows: {len(portfolio_df):,}")
+print(f"Unique funds: {portfolio_df['amfi_code'].nunique():,}")
+print(f"Unique stocks: {portfolio_df['stock_symbol'].nunique():,}")
+print(f"Unique sectors: {portfolio_df['sector'].nunique():,}")
+
+duplicate_portfolio = portfolio_df.duplicated(
+    subset=["amfi_code", "stock_symbol", "portfolio_date"]
+).sum()
+
+missing_portfolio = portfolio_df.isna().sum().sum()
+
+invalid_weight = (
+    (portfolio_df["weight_pct"] < 0)
+    | (portfolio_df["weight_pct"] > 100)
+).sum()
+
+invalid_market_value = (
+    portfolio_df["market_value_cr"] < 0
+).sum()
+
+invalid_price = (
+    portfolio_df["current_price_inr"] <= 0
+).sum()
+
+print(
+    f"Duplicate fund/stock/date rows: "
+    f"{duplicate_portfolio:,}"
+)
+
+print(f"Missing values: {missing_portfolio:,}")
+print(f"Invalid weight values: {invalid_weight:,}")
+print(f"Invalid market values: {invalid_market_value:,}")
+print(f"Invalid prices: {invalid_price:,}")
+
+if (
+    duplicate_portfolio == 0
+    and missing_portfolio == 0
+    and invalid_weight == 0
+    and invalid_market_value == 0
+    and invalid_price == 0
+):
+    print(
+        "RESULT: PASS - Portfolio Holdings "
+        "data is clean and valid."
+    )
+else:
+    print(
+        "RESULT: FAIL - Please review "
+        "Portfolio Holdings data."
+    )
+
+# Save cleaned Portfolio Holdings
+portfolio_df.to_csv(
+    PROCESSED_DIR / "portfolio_holdings_cleaned.csv",
+    index=False
+)
+
+print(
+    f"Saved cleaned Portfolio Holdings data to: "
+    f"{PROCESSED_DIR / 'portfolio_holdings_cleaned.csv'}"
+)
+# ============================================================
+# 32. Clean Category Inflows
+# ============================================================
+
+category_inflow_df = pd.read_csv(
+    next(RAW_DIR.glob("*05_category_inflows.csv"))
+)
+
+# Convert month to datetime
+category_inflow_df["month"] = pd.to_datetime(
+    category_inflow_df["month"]
+)
+
+print("\nCategory Inflows validation:")
+
+print(f"Rows: {len(category_inflow_df):,}")
+print(
+    f"Unique months: "
+    f"{category_inflow_df['month'].nunique():,}"
+)
+print(
+    f"Unique categories: "
+    f"{category_inflow_df['category'].nunique():,}"
+)
+
+duplicate_category_inflow = category_inflow_df.duplicated(
+    subset=["month", "category"]
+).sum()
+
+missing_category_inflow = (
+    category_inflow_df.isna().sum().sum()
+)
+
+print(
+    f"Duplicate month/category rows: "
+    f"{duplicate_category_inflow:,}"
+)
+
+print(
+    f"Missing values: "
+    f"{missing_category_inflow:,}"
+)
+
+if (
+    duplicate_category_inflow == 0
+    and missing_category_inflow == 0
+):
+    print(
+        "RESULT: PASS - Category Inflows "
+        "data is clean and valid."
+    )
+else:
+    print(
+        "RESULT: FAIL - Please review "
+        "Category Inflows data."
+    )
+
+# Save cleaned Category Inflows
+category_inflow_df["month"] = (
+    category_inflow_df["month"].dt.strftime("%Y-%m")
+)
+
+category_inflow_df.to_csv(
+    PROCESSED_DIR / "category_inflows_cleaned.csv",
+    index=False
+)
+
+print(
+    f"Saved cleaned Category Inflows data to: "
+    f"{PROCESSED_DIR / 'category_inflows_cleaned.csv'}"
+)
+# ============================================================
+# 33. Clean Industry Folio Count
+# ============================================================
+
+folio_df = pd.read_csv(
+    next(RAW_DIR.glob("*06_industry_folio_count.csv"))
+)
+
+# Convert month to datetime
+folio_df["month"] = pd.to_datetime(
+    folio_df["month"]
+)
+
+print("\nIndustry Folio Count validation:")
+
+print(f"Rows: {len(folio_df):,}")
+print(
+    f"Unique months: "
+    f"{folio_df['month'].nunique():,}"
+)
+
+duplicate_folio = folio_df.duplicated(
+    subset=["month"]
+).sum()
+
+missing_folio = folio_df.isna().sum().sum()
+
+folio_columns = [
+    "total_folios_crore",
+    "equity_folios_crore",
+    "debt_folios_crore",
+    "hybrid_folios_crore",
+    "others_folios_crore"
+]
+
+invalid_folio_values = (
+    folio_df[folio_columns] < 0
+).sum().sum()
+
+print(
+    f"Duplicate months: "
+    f"{duplicate_folio:,}"
+)
+
+print(
+    f"Missing values: "
+    f"{missing_folio:,}"
+)
+
+print(
+    f"Negative folio values: "
+    f"{invalid_folio_values:,}"
+)
+
+if (
+    duplicate_folio == 0
+    and missing_folio == 0
+    and invalid_folio_values == 0
+):
+    print(
+        "RESULT: PASS - Industry Folio Count "
+        "data is clean and valid."
+    )
+else:
+    print(
+        "RESULT: FAIL - Please review "
+        "Industry Folio Count data."
+    )
+
+# Save cleaned Industry Folio Count
+folio_df["month"] = (
+    folio_df["month"].dt.strftime("%Y-%m")
+)
+
+folio_df.to_csv(
+    PROCESSED_DIR / "industry_folio_count_cleaned.csv",
+    index=False
+)
+
+print(
+    f"Saved cleaned Industry Folio Count data to: "
+    f"{PROCESSED_DIR / 'industry_folio_count_cleaned.csv'}"
+)
+# ============================================================
+# 34. Clean Benchmark Indices
+# ============================================================
+
+benchmark_df = pd.read_csv(
+    next(RAW_DIR.glob("*10_benchmark_indices.csv"))
+)
+
+# Convert date to datetime
+benchmark_df["date"] = pd.to_datetime(
+    benchmark_df["date"]
+)
+
+print("\nBenchmark Indices validation:")
+
+print(f"Rows: {len(benchmark_df):,}")
+print(
+    f"Unique dates: "
+    f"{benchmark_df['date'].nunique():,}"
+)
+print(
+    f"Unique indices: "
+    f"{benchmark_df['index_name'].nunique():,}"
+)
+
+duplicate_benchmark = benchmark_df.duplicated(
+    subset=["date", "index_name"]
+).sum()
+
+missing_benchmark = benchmark_df.isna().sum().sum()
+
+invalid_close = (
+    benchmark_df["close_value"] <= 0
+).sum()
+
+print(
+    f"Duplicate date/index rows: "
+    f"{duplicate_benchmark:,}"
+)
+
+print(
+    f"Missing values: "
+    f"{missing_benchmark:,}"
+)
+
+print(
+    f"Non-positive close values: "
+    f"{invalid_close:,}"
+)
+
+if (
+    duplicate_benchmark == 0
+    and missing_benchmark == 0
+    and invalid_close == 0
+):
+    print(
+        "RESULT: PASS - Benchmark Indices "
+        "data is clean and valid."
+    )
+else:
+    print(
+        "RESULT: FAIL - Please review "
+        "Benchmark Indices data."
+    )
+
+# Save cleaned Benchmark Indices
+benchmark_df.to_csv(
+    PROCESSED_DIR / "benchmark_indices_cleaned.csv",
+    index=False
+)
+
+print(
+    f"Saved cleaned Benchmark Indices data to: "
+    f"{PROCESSED_DIR / 'benchmark_indices_cleaned.csv'}"
+)

@@ -88,3 +88,72 @@ CREATE TABLE IF NOT EXISTS fact_aum (
     PRIMARY KEY (fund_house, date),
     FOREIGN KEY (date) REFERENCES dim_date(date)
 );
+-- ============================================================
+-- Fact: Monthly SIP Inflows
+-- ============================================================
+
+CREATE TABLE IF NOT EXISTS fact_sip_inflows (
+    month TEXT PRIMARY KEY,
+    sip_inflow_crore REAL,
+    active_sip_accounts_crore REAL,
+    new_sip_accounts_lakh REAL,
+    sip_aum_lakh_crore REAL,
+    yoy_growth_pct REAL
+);
+
+
+-- ============================================================
+-- Fact: Category Inflows
+-- ============================================================
+
+CREATE TABLE IF NOT EXISTS fact_category_inflows (
+    month TEXT NOT NULL,
+    category TEXT NOT NULL,
+    inflow_crore REAL,
+    PRIMARY KEY (month, category)
+);
+
+
+-- ============================================================
+-- Fact: Industry Folio Count
+-- ============================================================
+
+CREATE TABLE IF NOT EXISTS fact_folio_count (
+    month TEXT PRIMARY KEY,
+    total_folios_crore REAL,
+    equity_folios_crore REAL,
+    debt_folios_crore REAL,
+    hybrid_folios_crore REAL,
+    others_folios_crore REAL
+);
+
+
+-- ============================================================
+-- Fact: Portfolio Holdings
+-- ============================================================
+
+CREATE TABLE IF NOT EXISTS fact_portfolio_holdings (
+    amfi_code INTEGER NOT NULL,
+    stock_symbol TEXT NOT NULL,
+    stock_name TEXT,
+    sector TEXT,
+    weight_pct REAL,
+    market_value_cr REAL,
+    current_price_inr REAL,
+    portfolio_date TEXT NOT NULL,
+    PRIMARY KEY (amfi_code, stock_symbol, portfolio_date),
+    FOREIGN KEY (amfi_code) REFERENCES dim_fund(amfi_code)
+);
+
+
+-- ============================================================
+-- Fact: Benchmark Indices
+-- ============================================================
+
+CREATE TABLE IF NOT EXISTS fact_benchmark_indices (
+    date TEXT NOT NULL,
+    index_name TEXT NOT NULL,
+    close_value REAL NOT NULL,
+    PRIMARY KEY (date, index_name),
+    FOREIGN KEY (date) REFERENCES dim_date(date)
+);
